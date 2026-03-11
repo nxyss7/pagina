@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nxyss7</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:#000;
+color:white;
+overflow:hidden;
+}
+
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:-1;
+}
+
+.container{
+width:90%;
+max-width:420px;
+text-align:center;
+background:rgba(10,10,10,0.85);
+border-radius:20px;
+padding:30px;
+box-shadow:0 0 40px rgba(255,0,0,0.3);
+border:1px solid #222;
+}
+
+.logo{
+width:110px;
+height:110px;
+border-radius:50%;
+border:3px solid red;
+display:flex;
+align-items:center;
+justify-content:center;
+margin:auto;
+font-size:40px;
+color:red;
+margin-bottom:18px;
+box-shadow:0 0 25px red;
+}
+
+h1{
+font-size:32px;
+letter-spacing:4px;
+margin-bottom:6px;
+color:#ff0000;
+}
+
+.user{
+color:#aaa;
+margin-bottom:30px;
+}
+
+.links{
+display:flex;
+flex-direction:column;
+gap:14px;
+}
+
+.link{
+background:#111;
+padding:18px;
+border-radius:14px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+cursor:pointer;
+transition:.3s;
+text-decoration:none;
+color:white;
+border:1px solid #222;
+}
+
+.link:hover{
+transform:scale(1.06);
+border:1px solid red;
+box-shadow:0 0 20px red;
+}
+
+.left{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+.icon{
+font-size:22px;
+width:35px;
+text-align:center;
+}
+
+.footer{
+margin-top:30px;
+font-size:12px;
+color:#777;
+}
+
+.footer span{
+color:red;
+}
+
+</style>
+</head>
+
+<body>
+
+<audio id="clickSound">
+<source src="https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3">
+</audio>
+
+<canvas id="matrix"></canvas>
+
+<div class="container">
+
+<div class="logo">
+<i class="fa-solid fa-skull"></i>
+</div>
+
+<h1>Nxyss7</h1>
+<div class="user">@nxyss7</div>
+
+<div class="links">
+
+<a class="link" onclick="clickSound()" href="https://www.instagram.com/nxyss7/" target="_blank">
+<div class="left">
+<div class="icon"><i class="fa-brands fa-instagram"></i></div>
+<div>
+Instagram<br>
+<span>@nxyss7</span>
+</div>
+</div>
+<i class="fa-solid fa-arrow-right"></i>
+</a>
+
+<a class="link" onclick="clickSound()" href="https://www.tiktok.com/@nxyss_7" target="_blank">
+<div class="left">
+<div class="icon"><i class="fa-brands fa-tiktok"></i></div>
+<div>
+TikTok<br>
+<span>@nxyss_7</span>
+</div>
+</div>
+<i class="fa-solid fa-arrow-right"></i>
+</a>
+
+<a class="link" onclick="clickSound()" href="https://www.youtube.com/@NOXMODDER_EDITS" target="_blank">
+<div class="left">
+<div class="icon"><i class="fa-brands fa-youtube"></i></div>
+<div>
+Canal YouTube<br>
+<span>NOX MODDER</span>
+</div>
+</div>
+<i class="fa-solid fa-arrow-right"></i>
+</a>
+
+<a class="link" onclick="clickSound()" href="https://www.twitch.tv/nxyss7" target="_blank">
+<div class="left">
+<div class="icon"><i class="fa-brands fa-twitch"></i></div>
+<div>
+Canal Twitch<br>
+<span>Nxyss7</span>
+</div>
+</div>
+<i class="fa-solid fa-arrow-right"></i>
+</a>
+
+<a class="link" onclick="clickSound()" href="https://discord.com/invite/FzM9dknagA" target="_blank">
+<div class="left">
+<div class="icon"><i class="fa-brands fa-discord"></i></div>
+<div>
+Servidor Discord<br>
+<span>Entrar no servidor</span>
+</div>
+</div>
+<i class="fa-solid fa-arrow-right"></i>
+</a>
+
+<a class="link" onclick="clickSound()" href="https://livepix.gg/moxmodder" target="_blank">
+<div class="left">
+<div class="icon"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+<div>
+Doação via Pix<br>
+<span>Apoie o canal</span>
+</div>
+</div>
+<i class="fa-solid fa-arrow-right"></i>
+</a>
+
+<a class="link" onclick="clickSound()" href="https://www.paypal.com/donate/?hosted_button_id=3ZLDQ2MV3UM8U" target="_blank">
+<div class="left">
+<div class="icon"><i class="fa-brands fa-paypal"></i></div>
+<div>
+Doação PayPal<br>
+<span>Apoie o canal</span>
+</div>
+</div>
+<i class="fa-solid fa-arrow-right"></i>
+</a>
+
+</div>
+
+<div class="footer">
+Criado por <span>NOX MODDER</span>
+</div>
+
+</div>
+
+<script>
+
+function clickSound(){
+document.getElementById("clickSound").play().catch(()=>{});
+}
+
+const canvas=document.getElementById("matrix");
+const ctx=canvas.getContext("2d");
+
+canvas.height=window.innerHeight;
+canvas.width=window.innerWidth;
+
+const letters="01";
+const matrix=letters.split("");
+
+const fontSize=14;
+const columns=canvas.width/fontSize;
+
+const drops=[];
+
+for(let x=0;x<columns;x++)
+drops[x]=1;
+
+function draw(){
+
+ctx.fillStyle="rgba(0,0,0,0.05)";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle="#ff0000";
+ctx.font=fontSize+"px monospace";
+
+for(let i=0;i<drops.length;i++){
+
+const text=matrix[Math.floor(Math.random()*matrix.length)];
+
+ctx.fillText(text,i*fontSize,drops[i]*fontSize);
+
+if(drops[i]*fontSize>canvas.height && Math.random()>0.975)
+drops[i]=0;
+
+drops[i]++;
+
+}
+
+}
+
+setInterval(draw,33);
+
+</script>
+
+</body>
+</html>
